@@ -2,25 +2,30 @@ package caldeiraVapor.planta;
 
 public class Bomba {
     int vazao; // L/seg
-    Boolean flagAbetFech;
-    Bomba(){
+    Boolean bombaAberta; // true se a bomba esta aberta, false se fechada
+
+    Bomba() {
         vazao = 5; // L/seg
-        flagAbetFech = true;
+        bombaAberta = true;
     }
       
-    public void setFlag(Boolean flag){
-        flagAbetFech = flag;
+    public void abre() {
+        bombaAberta = true;
     }
+
+	public void fecha() {
+		bombaAberta = false;
+	}
     
-    public Boolean getFlag(){
-        return flagAbetFech;
+    public Boolean isBombaAberta() {
+        return bombaAberta;
     }
    
-    public void setVazao(int vazao){
+    public void setVazao(int vazao) {
         this.vazao = vazao;
     }
     
-    public int getVazao(){
+    public int getVazao() {
         return vazao;
     }
     
