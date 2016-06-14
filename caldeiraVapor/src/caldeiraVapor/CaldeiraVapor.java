@@ -37,14 +37,12 @@ public class CaldeiraVapor extends Thread{
         int b = sensorAgua.getNivel();
         System.out.println("Litros"+(somatorio+b));
         sensorAgua.setNivel(somatorio+b);
-        CaldeiraVaporGui.alteraGui(somatorio+b);
     }
     
     public void run() {
         while(true){
-            System.out.println("Enchendo");
+            System.out.println("Enchendo"); 
             enchdendoCaldeira(); 
-            System.out.println("enchi");
             if(sensorAgua.getNivel()>=capacidade){
                 System.out.println("CaldeiraCheia>>" + sensorAgua.getNivel());
                 break;

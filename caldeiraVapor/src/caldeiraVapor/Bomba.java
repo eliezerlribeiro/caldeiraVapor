@@ -1,7 +1,7 @@
 
 package caldeiraVapor;
 
-public class Bomba extends Thread{
+public class Bomba {
     int vasao; // L/seg
     Boolean flagAbetFech;
     Bomba(){
@@ -26,7 +26,4 @@ public class Bomba extends Thread{
     }
     
   
-    public void run() {
-     
-    }
 }
