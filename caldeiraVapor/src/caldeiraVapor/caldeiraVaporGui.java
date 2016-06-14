@@ -1,3 +1,5 @@
+package caldeiraVapor;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -36,35 +38,36 @@ public class caldeiraVaporGui extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1024, 720));
         getContentPane().setLayout(null);
 
         jToggleButton2.setText("Aberto/Fechado");
         getContentPane().add(jToggleButton2);
-        jToggleButton2.setBounds(90, 260, 140, 30);
+        jToggleButton2.setBounds(90, 260, 140, 23);
 
         jToggleButton4.setText("Aberto/Fechado");
         getContentPane().add(jToggleButton4);
-        jToggleButton4.setBounds(90, 420, 140, 30);
+        jToggleButton4.setBounds(90, 420, 140, 23);
 
         jToggleButton3.setText("Aberto/Fechado");
         getContentPane().add(jToggleButton3);
-        jToggleButton3.setBounds(90, 340, 140, 30);
+        jToggleButton3.setBounds(90, 340, 140, 23);
 
         jToggleButton1.setText("Aberto/Fechado");
         getContentPane().add(jToggleButton1);
-        jToggleButton1.setBounds(90, 170, 140, 30);
+        jToggleButton1.setBounds(90, 170, 140, 23);
 
         jToggleButton5.setText("Aberto/Fechado");
         getContentPane().add(jToggleButton5);
-        jToggleButton5.setBounds(761, 410, 140, 30);
+        jToggleButton5.setBounds(770, 420, 140, 23);
 
         jLabel3.setText("1000L");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(450, 270, 49, 18);
+        jLabel3.setBounds(450, 270, 49, 14);
 
         jLabel1.setText("500 ml/s");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(460, 80, 120, 18);
+        jLabel1.setBounds(460, 80, 120, 14);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/caldeiraVapor.png"))); // NOI18N
         jLabel2.setText("NivelCaldeira");
