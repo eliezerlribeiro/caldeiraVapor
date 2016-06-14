@@ -1,17 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package caldeiraVapor;
 
-/**
- *
- * @author Eliezer
- */
 public class Bomba {
     int vasao; // L/seg
     Boolean flagAbetFech;
+    Bomba(){
+        vasao = 5; // L/seg
+        flagAbetFech = true;
+    }
+      
     Bomba(int vasao){
         this.vasao = vasao;
         flagAbetFech = true;

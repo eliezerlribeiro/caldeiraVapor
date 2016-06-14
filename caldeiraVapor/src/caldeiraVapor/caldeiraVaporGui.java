@@ -38,7 +38,7 @@ public class caldeiraVaporGui extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1024, 720));
+        setMinimumSize(new java.awt.Dimension(960, 590));
         getContentPane().setLayout(null);
 
         jToggleButton2.setText("Aberto/Fechado");
@@ -71,8 +71,9 @@ public class caldeiraVaporGui extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/caldeiraVapor.png"))); // NOI18N
         jLabel2.setText("NivelCaldeira");
+        jLabel2.setMinimumSize(new java.awt.Dimension(950, 550));
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 0, 900, 540);
+        jLabel2.setBounds(0, 0, 950, 550);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
