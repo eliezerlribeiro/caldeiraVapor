@@ -7,16 +7,16 @@ public class SensorNivelAgua {
         nivel=0;
         funcionando=true;
     }
-    void setNivel(int val){
+    public void setNivel(int val){
         nivel = val;
     }
-    int getNivel(){
+    public int getNivel(){
         return nivel;
     }
-    void setFuncionando(Boolean val){
+    public void setFuncionando(Boolean val){
         funcionando = val;
     }
-    Boolean getFuncionando(){
+    public Boolean getFuncionando(){
         return funcionando;
     }
 }

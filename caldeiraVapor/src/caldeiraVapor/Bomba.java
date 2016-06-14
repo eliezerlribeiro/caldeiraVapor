@@ -1,7 +1,7 @@
 
 package caldeiraVapor;
 
-public class Bomba {
+public class Bomba extends Thread{
     int vasao; // L/seg
     Boolean flagAbetFech;
     Bomba(){
@@ -9,23 +9,24 @@ public class Bomba {
         flagAbetFech = true;
     }
       
-    Bomba(int vasao){
-        this.vasao = vasao;
-        flagAbetFech = true;
-    }
-    void setFlag(Boolean flag){
+    public void setFlag(Boolean flag){
         flagAbetFech = flag;
     }
     
-    Boolean getFlag(Boolean flag){
+    public Boolean getFlag(){
         return flagAbetFech;
     }
    
-    void setVasao(int vasao){
+    public void setVasao(int vasao){
         this.vasao = vasao;
     }
     
-    int getFlag(){
+    public int getVasao(){
         return vasao;
+    }
+    
+  
+    public void run() {
+     
     }
 }

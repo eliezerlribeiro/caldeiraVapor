@@ -11,14 +11,21 @@ package caldeiraVapor;
  * @author eliezer
  */
 public class CaldeiraVaporGui extends javax.swing.JFrame {
-
     /**
      * Creates new form NewJFrame
      */
+   
     public CaldeiraVaporGui() {
         initComponents();
+        Thread caldeiraSimulada = new CaldeiraVapor ();
+        caldeiraSimulada.start();
     }
-
+    
+    public static void alteraGui(int litros ){
+        System.out.println("SETANDO");
+        capacidadeGui.setText(litros+"");
+    }
+     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,7 +40,7 @@ public class CaldeiraVaporGui extends javax.swing.JFrame {
         jToggleButton3 = new javax.swing.JToggleButton();
         jToggleButton1 = new javax.swing.JToggleButton();
         jToggleButton5 = new javax.swing.JToggleButton();
-        jLabel3 = new javax.swing.JLabel();
+        capacidadeGui = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -61,9 +68,9 @@ public class CaldeiraVaporGui extends javax.swing.JFrame {
         getContentPane().add(jToggleButton5);
         jToggleButton5.setBounds(770, 420, 140, 23);
 
-        jLabel3.setText("1000L");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(450, 270, 49, 14);
+        capacidadeGui.setText("1000L");
+        getContentPane().add(capacidadeGui);
+        capacidadeGui.setBounds(450, 270, 49, 14);
 
         jLabel1.setText("500 ml/s");
         getContentPane().add(jLabel1);
@@ -77,21 +84,12 @@ public class CaldeiraVaporGui extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CaldeiraVaporGui().setVisible(true);
-            }
-        });
-        
-        
-    }
-  
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private static javax.swing.JLabel capacidadeGui;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JToggleButton jToggleButton3;
