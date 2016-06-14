@@ -1,5 +1,4 @@
-
-package caldeiraVapor;
+package caldeiraVapor.planta;
 
 public class SensorVapor {
     int fluxo;

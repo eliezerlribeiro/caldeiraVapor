@@ -1,11 +1,10 @@
-
-package caldeiraVapor;
+package caldeiraVapor.planta;
 
 public class Bomba {
-    int vasao; // L/seg
+    int vazao; // L/seg
     Boolean flagAbetFech;
     Bomba(){
-        vasao = 5; // L/seg
+        vazao = 5; // L/seg
         flagAbetFech = true;
     }
       
@@ -17,12 +16,12 @@ public class Bomba {
         return flagAbetFech;
     }
    
-    public void setVasao(int vasao){
-        this.vasao = vasao;
+    public void setVazao(int vazao){
+        this.vazao = vazao;
     }
     
-    public int getVasao(){
-        return vasao;
+    public int getVazao(){
+        return vazao;
     }
     
   

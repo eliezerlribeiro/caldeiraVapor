@@ -1,4 +1,4 @@
-package caldeiraVapor;
+package caldeiraVapor.planta;
 
 public class ValvulaSaidaCaldeira {
     int fluxo;

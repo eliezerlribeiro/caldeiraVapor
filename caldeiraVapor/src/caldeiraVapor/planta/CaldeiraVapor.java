@@ -1,8 +1,8 @@
-
-package caldeiraVapor;
+package caldeiraVapor.planta;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import caldeiraVapor.planta.*;
 
 public class CaldeiraVapor extends Thread{
     Bomba[] arrayBombas;
@@ -13,7 +13,7 @@ public class CaldeiraVapor extends Thread{
     int totalBombas;
     int temperatura;
     int capacidade;
-    CaldeiraVapor(){
+    public CaldeiraVapor(){
         totalBombas = 4;
         arrayBombas = new Bomba[totalBombas];
         for(int i =0 ; i < totalBombas; i++ ){
@@ -27,11 +27,11 @@ public class CaldeiraVapor extends Thread{
         valvula = new ValvulaSaidaCaldeira();
     }
     
-    public  void enchdendoCaldeira(){
+    public void enchendoCaldeira(){
         int somatorio=0;
        for(int i =0 ; i < totalBombas; i++ ){
             if(arrayBombas[i].getFlag()){
-                somatorio += arrayBombas[i].getVasao();
+                somatorio += arrayBombas[i].getVazao();
             }
         }
         int b = sensorAgua.getNivel();
@@ -42,7 +42,7 @@ public class CaldeiraVapor extends Thread{
     public void run() {
         while(true){
             System.out.println("Enchendo"); 
-            enchdendoCaldeira(); 
+            enchendoCaldeira(); 
             if(sensorAgua.getNivel()>=capacidade){
                 System.out.println("CaldeiraCheia>>" + sensorAgua.getNivel());
                 break;
