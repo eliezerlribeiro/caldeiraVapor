@@ -3,6 +3,7 @@ package caldeiraVapor.planta;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import caldeiraVapor.planta.*;
+import caldeiraVapor.mensagens.*;
 
 public class CaldeiraVapor extends Thread {
 
@@ -12,11 +13,18 @@ public class CaldeiraVapor extends Thread {
     SensorVapor sensorVapor;
     ValvulaSaidaCaldeira valvula;
 
+	private FilaPlantaParaControle filaParaControle;
+	private FilaControleParaPlanta filaDoControle;
+
     int totalBombas;
     int temperatura;
     int capacidade;
 
-    public CaldeiraVapor() {
+    public CaldeiraVapor(FilaPlantaParaControle paraControle, FilaControleParaPlanta doControle) {
+
+		this.filaParaControle = paraControle;
+		this.filaDoControle = doControle;
+
         totalBombas = 4;
         arrayBombas = new Bomba[totalBombas];
         for(int i =0 ; i < totalBombas; i++ ){
@@ -70,15 +78,30 @@ public class CaldeiraVapor extends Thread {
 			System.out.print("Nível: ");
 			System.out.println(sensorAgua.getNivel());
 
-			// Essa tarefa de abrir e fechar as bombas eh do controle
-			// estah aqui so para demonstracao
-            if (sensorAgua.getNivel() >= 150) {
-				for (int i = 0; i < totalBombas; i++) {
-					arrayBombas[i].fecha();
-				}
-            } else if (sensorAgua.getNivel() <= 20) {
-				for (int i = 0; i < totalBombas; i++) {
-					arrayBombas[i].abre();
+			// Despacha mensagens
+			if (filaParaControle.isEmpty()) {
+				MensagemDaPlanta msg = MensagemDaPlanta.LEVEL;
+				msg.setConteudo(sensorAgua.getNivel());
+				filaParaControle.post(msg);
+			}
+
+			// Recebe mensagens
+			while(!filaDoControle.isEmpty()) {
+				MensagemDoControle msg = filaDoControle.read();
+
+				switch(msg) {
+				case OPEN_PUMP:
+					for (int i = 0; i < totalBombas; i++) {
+						arrayBombas[i].abre();
+					}
+					break;
+				case CLOSE_PUMP:
+					for (int i = 0; i < totalBombas; i++) {
+						arrayBombas[i].fecha();
+					}
+					break;
+				default:
+					break;
 				}
 			}
 
