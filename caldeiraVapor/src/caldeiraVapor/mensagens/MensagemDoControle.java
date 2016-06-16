@@ -6,7 +6,8 @@ public enum MensagemDoControle {
 	UNSPECIFIED_MESSAGE,
 	MODE,
 	PROGRAM_READY,
-	VALVE,
+	OPEN_VALVE,
+        CLOSE_VALVE,
 	OPEN_PUMP,
 	CLOSE_PUMP,
 	PUMP_FAILURE_DETECTION,
@@ -21,12 +22,17 @@ public enum MensagemDoControle {
 	private int n; // usado quando a mensagem precisa carregar um valor
 					// p. ex. qual bomba que tem que abrir
 					// o significado varia de acordo com a mensagem
-
+        private boolean b; 
+        
 	public void setConteudo(int valor) {
 		n = valor;
 	}
 
 	public int getConteudo() {
 		return n;
+	}
+        
+        public boolean getFlag() {
+		return b;
 	}
 }

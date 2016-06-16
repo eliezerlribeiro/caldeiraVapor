@@ -4,7 +4,7 @@ public class SensorVapor {
     int fluxo;
     Boolean funcionando;
     SensorVapor(){
-        fluxo=13;
+        fluxo=0;
         funcionando=true;
     }
     void setFluxo(int val){

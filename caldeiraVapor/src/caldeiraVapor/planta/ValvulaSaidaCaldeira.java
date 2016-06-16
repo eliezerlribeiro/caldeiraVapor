@@ -4,19 +4,22 @@ public class ValvulaSaidaCaldeira {
     int fluxo;
     Boolean aberta;
     ValvulaSaidaCaldeira(){
-        fluxo=0;
+        fluxo=30;
         aberta=false;
     }
-    void setFluxo(int val){
+    public void setFluxo(int val){
         fluxo = val;
     }
-    int getFluxo(){
+    public int getFluxo(){
         return fluxo;
     }
-    void setAberta(Boolean val){
+    public void changeValve(){
+        aberta = !aberta;
+    }
+    public void setAberta(Boolean val){
         aberta = val;
     }
-    Boolean getAberta(){
+    public Boolean getAberta(){
         return aberta;
     }
 }

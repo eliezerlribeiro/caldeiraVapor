@@ -5,8 +5,9 @@ public class BotaoEmergencia {
     BotaoEmergencia (){
         botaoEmerg=false;
     }
-    void setBotaoEmerg(Boolean val){
-        botaoEmerg = val;
+    public void push(){
+        System.out.println("BOTAO PARADA DE EMERGENCIA");
+        botaoEmerg = true;
     }
     Boolean getBotaoEmerg( ){
         return botaoEmerg ;

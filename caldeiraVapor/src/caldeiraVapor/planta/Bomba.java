@@ -5,7 +5,7 @@ public class Bomba {
     Boolean bombaAberta; // true se a bomba esta aberta, false se fechada
 
     Bomba() {
-        vazao = 5; // L/seg
+        vazao = 2; // L/seg
         bombaAberta = true;
     }
       
