@@ -19,7 +19,7 @@ public class Simulador {
         CaldeiraVapor caldeiraSimulada = new CaldeiraVapor(fila1, fila2);
         caldeiraSimulada.start();
         Controle controle = new Controle(fila1, fila2);
-        CaldeiraVaporGui gui = new CaldeiraVaporGui();
+     //   CaldeiraVaporGui gui = new CaldeiraVaporGui();
         
     }
 }
