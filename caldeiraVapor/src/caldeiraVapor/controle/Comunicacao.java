@@ -36,38 +36,38 @@ public class Comunicacao extends RealtimeThread {
                         
 			// Despacha todas as mensagens
 			if (controle.ligaBombas) {
-                            MensagemDoControle msg = MensagemDoControle.OPEN_PUMP;
+                            MensagemDoControle msg = new MensagemDoControle(TipoDeMensagem.OPEN_PUMP);
                             filaSaida.post(msg);
                             controle.ligaBombas = false;
 			}
 
 			if (controle.desligaBombas) {
-                            MensagemDoControle msg = MensagemDoControle.CLOSE_PUMP;
+                            MensagemDoControle msg = new MensagemDoControle(TipoDeMensagem.CLOSE_PUMP);
                             filaSaida.post(msg);
                             controle.desligaBombas = false;
 			}
                         
                         if (controle.abreValvula) {
-                            MensagemDoControle msg = MensagemDoControle.OPEN_VALVE;
+                            MensagemDoControle msg = new MensagemDoControle(TipoDeMensagem.OPEN_VALVE);
                             filaSaida.post(msg);
                             controle.abreValvula = false;
 			}
                         
                         if (controle.fechaValvula) {
-                            MensagemDoControle msg = MensagemDoControle.CLOSE_VALVE;
+                            MensagemDoControle msg = new MensagemDoControle(TipoDeMensagem.CLOSE_VALVE);
                             filaSaida.post(msg);
                             controle.fechaValvula = false;
 			}
                         
                         if (controle.programRead) {
-                            MensagemDoControle msg = MensagemDoControle.PROGRAM_READY;
+                            MensagemDoControle msg = new MensagemDoControle(TipoDeMensagem.PROGRAM_READY);
                             filaSaida.post(msg);
                             controle.programRead = false;
 			}
                         
                         if (controle.paradaDeEmergencia) {
                             controle.mode = 3;
-                            MensagemDoControle msg = MensagemDoControle.MODE;
+                            MensagemDoControle msg = new MensagemDoControle(TipoDeMensagem.MODE);
                             msg.setConteudo(3); //3 representa mode emergency stop
                             filaSaida.post(msg);
                             controle.paradaDeEmergencia = false;
@@ -76,10 +76,10 @@ public class Comunicacao extends RealtimeThread {
 			// Recebe todas as mensagens
 			while(!filaEntrada.isEmpty()) {
 				MensagemDaPlanta msg = filaEntrada.read();
-                                if(msg != MensagemDaPlanta.STOP){
+                                if (msg.tipo != TipoDeMensagem.STOP) {
                                     countStop=0;
                                 }
-				switch(msg) {
+				switch(msg.tipo) {
                                     case LEVEL:
 					controle.nivelAgua = msg.getConteudo();
 					break;
@@ -88,7 +88,7 @@ public class Comunicacao extends RealtimeThread {
                                         break;
                                     case PHYSICAL_UNITS_READY:
                                         controle.mode = 2; // SETANDO mode Normal
-                                        MensagemDoControle msgC = MensagemDoControle.MODE;
+                                        MensagemDoControle msgC = new MensagemDoControle(TipoDeMensagem.MODE);
                                         msgC.setConteudo(2); //2 representa mode normal
                                         filaSaida.post(msgC);
                                         break;
@@ -99,7 +99,7 @@ public class Comunicacao extends RealtimeThread {
                                         countStop++;
                                         if(countStop==3){
                                             controle.mode = 3; // SETANDO mode EMERGENCIA
-                                            MensagemDoControle msgC1 = MensagemDoControle.MODE;
+                                            MensagemDoControle msgC1 = new MensagemDoControle(TipoDeMensagem.MODE);
                                             msgC1.setConteudo(3);
                                             filaSaida.post(msgC1);
                                         }   

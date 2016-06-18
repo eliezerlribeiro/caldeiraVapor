@@ -40,7 +40,7 @@ public class CaldeiraVapor extends Thread {
         caldeiraLigada =true;
         
         //PRIMEIRA COISA QUANDO A CALDEIRA É LIGADA
-        MensagemDaPlanta msg = MensagemDaPlanta.STEAM_BOILER_WAITING;
+        MensagemDaPlanta msg = new MensagemDaPlanta(TipoDeMensagem.STEAM_BOILER_WAITING);
         msg.setConteudo(1); // SETADO MODO INICIANDO
         filaParaControle.post(msg);
         mode = 1;
@@ -92,11 +92,13 @@ public class CaldeiraVapor extends Thread {
             System.out.println("FluxoValvula: "+ valvula.getFluxo() + "Abrto? "+valvula.getAberta());
             // Despacha mensagens
             if (filaParaControle.isEmpty()) {
-                    MensagemDaPlanta msg = MensagemDaPlanta.LEVEL;
+					MensagemDaPlanta msg;
+
+                    msg = new MensagemDaPlanta(TipoDeMensagem.LEVEL);
                     msg.setConteudo(sensorAgua.getNivel());
                     filaParaControle.post(msg);
 
-                    msg = MensagemDaPlanta.STEAM;
+                    msg = new MensagemDaPlanta(TipoDeMensagem.STEAM);
                     msg.setConteudo(sensorVapor.getFluxo());
                     filaParaControle.post(msg);
             }
@@ -104,7 +106,7 @@ public class CaldeiraVapor extends Thread {
             // Recebe mensagens
             while(!filaDoControle.isEmpty()) {
                     MensagemDoControle msg = filaDoControle.read();
-                    switch(msg) {
+                    switch(msg.tipo) {
                         case OPEN_PUMP:
                                 for (int i = 0; i < totalBombas; i++) {
                                         arrayBombas[i].abre();
@@ -122,7 +124,7 @@ public class CaldeiraVapor extends Thread {
                             valvula.setAberta(false);
                             break;
                         case PROGRAM_READY:
-                            MensagemDaPlanta msgP = MensagemDaPlanta.PHYSICAL_UNITS_READY;
+                            MensagemDaPlanta msgP = new MensagemDaPlanta(TipoDeMensagem.PHYSICAL_UNITS_READY);
                             filaParaControle.post(msgP);
                             break;
                         case MODE:
