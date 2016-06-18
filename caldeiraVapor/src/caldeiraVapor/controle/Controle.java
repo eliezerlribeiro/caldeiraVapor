@@ -17,8 +17,20 @@ public class Controle {
 	Diagnostico tarefaDiagnostico;
 
 	public int nivelAgua;
-	public boolean ligaBombas;
+        public int nivelAguaMinimoNormal;
+        public int nivelAguaMaximoNormal;
+        public int nivelAguaMinimoLimite;
+        public int nivelAguaMaximoLimite;
+        public int fluxoVapor;
+        public int mode; // 1 INICIACAO ; 2 NORMAL
+        public int falha; /// 1 sensorNivelAgua ; 2 Bomba 1 ;...;
+	
+        public boolean ligaBombas;
 	public boolean desligaBombas;
+        public boolean abreValvula;
+        public boolean fechaValvula;
+        public boolean programRead;
+        public boolean paradaDeEmergencia;
 
 	public Controle(FilaPlantaParaControle filaEntrada, FilaControleParaPlanta filaSaida) {
 
@@ -44,7 +56,7 @@ public class Controle {
 		PeriodicParameters periodoAnalise =
 				new PeriodicParameters(
 						null,
-						new RelativeTime(5000 /* ms */, 0 /* ns */),
+						new RelativeTime(2500 /* ms */, 0 /* ns */),
 						null,null,null,null
 				);
 
@@ -78,5 +90,13 @@ public class Controle {
 		tarefaAnalise.start();
 		tarefaComunicacao.start();
 		tarefaDiagnostico.start();
+                
+                
+                //MUDAR PARA CALCULAR DE ACORDO COM A CAPACIDADE MAXIMA
+                nivelAguaMinimoNormal = 100; 
+                nivelAguaMaximoNormal = 600;
+                
+                nivelAguaMinimoLimite = 50;
+                nivelAguaMaximoLimite = 800;
 	}
 }

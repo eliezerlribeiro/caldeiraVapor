@@ -17,12 +17,12 @@ public class Simulador {
 	private static FilaControleParaPlanta fila2;
 
     public static void main(String args[]) throws IOException {
+      
+        // Cria as filas
+        fila1 = new FilaPlantaParaControle();
+        fila2 = new FilaControleParaPlanta();
 
-		// Cria as filas
-		fila1 = new FilaPlantaParaControle();
-		fila2 = new FilaControleParaPlanta();
-
-		// Cria o controle e a planta
+        // Cria o controle e a planta
         CaldeiraVapor caldeiraSimulada = new CaldeiraVapor(fila1, fila2);
         caldeiraSimulada.start();
 		Controle controle = new Controle(fila1, fila2);
@@ -39,6 +39,7 @@ public class Simulador {
 		} finally {
 			listener.close();
 		}
+
     }
 }
 

@@ -18,6 +18,7 @@ public class Diagnostico extends RealtimeThread {
 	public void run() {
 		while(true) {
 			// Stub do metodo de diagnostico
+                        
 			System.out.println("Tarefa de diagnóstico escalonada.");
 			waitForNextPeriod();
 		}
