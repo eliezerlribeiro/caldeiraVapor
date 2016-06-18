@@ -25,14 +25,35 @@ public class Controle {
         public int mode; // 1 INICIACAO ; 2 NORMAL
         public int falha; /// 1 sensorNivelAgua ; 2 Bomba 1 ;...;
 	
-        public boolean ligaBombas;
-	public boolean desligaBombas;
+        public boolean[] ligaBomba;
+	public boolean[] desligaBomba;
         public boolean abreValvula;
         public boolean fechaValvula;
         public boolean programRead;
         public boolean paradaDeEmergencia;
 
 	public Controle(FilaPlantaParaControle filaEntrada, FilaControleParaPlanta filaSaida) {
+
+                // Inicializa as variaveis
+                nivelAguaMinimoNormal = 100; 
+                nivelAguaMaximoNormal = 600;
+                
+                nivelAguaMinimoLimite = 50;
+                nivelAguaMaximoLimite = 800;
+
+		nivelAgua = 0;
+
+		ligaBomba = new boolean[4];
+		desligaBomba = new boolean[4];
+		for (int i = 0; i < 4; i++) {
+			ligaBomba[i] = false;
+			desligaBomba[i] = false;
+		}
+
+		abreValvula = false;
+		fechaValvula = false;
+		paradaDeEmergencia = false;
+		programRead = false;
 
 		// Parametriza a tarefa de comunicacao (diz o periodo e a prioridade)
 		PriorityParameters prioridadeComunicacao = 
@@ -90,13 +111,5 @@ public class Controle {
 		tarefaAnalise.start();
 		tarefaComunicacao.start();
 		tarefaDiagnostico.start();
-                
-                
-                //MUDAR PARA CALCULAR DE ACORDO COM A CAPACIDADE MAXIMA
-                nivelAguaMinimoNormal = 100; 
-                nivelAguaMaximoNormal = 600;
-                
-                nivelAguaMinimoLimite = 50;
-                nivelAguaMaximoLimite = 800;
 	}
 }

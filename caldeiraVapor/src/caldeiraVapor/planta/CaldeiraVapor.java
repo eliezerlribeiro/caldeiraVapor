@@ -106,17 +106,21 @@ public class CaldeiraVapor extends Thread {
             // Recebe mensagens
             while(!filaDoControle.isEmpty()) {
                     MensagemDoControle msg = filaDoControle.read();
+					int bomba = -1;
+
                     switch(msg.tipo) {
                         case OPEN_PUMP:
-                                for (int i = 0; i < totalBombas; i++) {
-                                        arrayBombas[i].abre();
-                                }
-                                break;
+							bomba = msg.getConteudo();
+							if (bomba >= 0 && bomba < 4) {
+								arrayBombas[bomba].abre();
+							}
+							break;
                         case CLOSE_PUMP:
-                                for (int i = 0; i < totalBombas; i++) {
-                                        arrayBombas[i].fecha();
-                                }
-                                break;
+							bomba = msg.getConteudo();
+							if (bomba >= 0 && bomba < 4) {
+								arrayBombas[bomba].fecha();
+							}
+							break;
                         case OPEN_VALVE:
                              valvula.setAberta(true);
                             break;

@@ -33,18 +33,25 @@ public class Comunicacao extends RealtimeThread {
 
 	public void run() {
 		while(true) {
-                        
+
 			// Despacha todas as mensagens
-			if (controle.ligaBombas) {
-                            MensagemDoControle msg = new MensagemDoControle(TipoDeMensagem.OPEN_PUMP);
-                            filaSaida.post(msg);
-                            controle.ligaBombas = false;
+                        
+			for (int i = 0; i < 4; i++) {
+				if (controle.ligaBomba[i]) {
+		                    MensagemDoControle msg = new MensagemDoControle(TipoDeMensagem.OPEN_PUMP);
+				    msg.setConteudo(i);
+		                    filaSaida.post(msg);
+		                    controle.ligaBomba[i] = false;
+				}
 			}
 
-			if (controle.desligaBombas) {
-                            MensagemDoControle msg = new MensagemDoControle(TipoDeMensagem.CLOSE_PUMP);
-                            filaSaida.post(msg);
-                            controle.desligaBombas = false;
+			for (int i = 0; i < 4; i++) {
+				if (controle.desligaBomba[i]) {
+		                    MensagemDoControle msg = new MensagemDoControle(TipoDeMensagem.CLOSE_PUMP);
+				    msg.setConteudo(i);
+		                    filaSaida.post(msg);
+		                    controle.desligaBomba[i] = false;
+				}
 			}
                         
                         if (controle.abreValvula) {

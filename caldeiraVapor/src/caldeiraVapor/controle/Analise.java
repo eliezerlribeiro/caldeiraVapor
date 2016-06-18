@@ -17,37 +17,48 @@ public class Analise extends RealtimeThread {
 		this.controle = controle;
 	}
 
+	private void ligaTodas() {
+		for (int i = 0; i < 4; i++) {
+			controle.ligaBomba[i] = true;
+		}
+	}
+
+	private void desligaTodas() {
+		for (int i = 0; i < 4; i++) {
+			controle.desligaBomba[i] = true;
+		}
+	}
+
 	public void run() {
 		while(true) {
 			// Algoritmo tosco, so para exemplo
                         switch(controle.mode) {
                             case 1: // modoInicializando
-                                if(controle.fluxoVapor == 0){
-                                    if(controle.nivelAgua > controle.nivelAguaMaximoNormal) {
+                                if (controle.fluxoVapor == 0){
+                                    if (controle.nivelAgua > controle.nivelAguaMaximoNormal) {
                                        controle.abreValvula=true; //OPEN VALVE
-                                    }else if (controle.nivelAgua <= controle.nivelAguaMinimoNormal){
+                                    } else if (controle.nivelAgua <= controle.nivelAguaMinimoNormal){
                                         controle.fechaValvula=true;  
-                                        controle.ligaBombas = true;
-                                           
-                                    }else{
+                                        ligaTodas();
+                                    } else {
                                         controle.fechaValvula=true;
                                         controle.programRead = true;
                                     }
-                                }else{
+                                } else {
                                     controle.paradaDeEmergencia = true;
                                     //TROCAR DE MODE emergency stop 
                                 }
                             break;
                             case 2:
-                                if(controle.nivelAgua > controle.nivelAguaMaximoNormal-100) {
-                                    controle.desligaBombas=true; 
-                                    if(controle.nivelAgua >= controle.nivelAguaMaximoLimite-200){
+                                if (controle.nivelAgua > controle.nivelAguaMaximoNormal-200) {
+                                    desligaTodas(); 
+                                    if (controle.nivelAgua >= controle.nivelAguaMaximoLimite-200){
                                        controle.paradaDeEmergencia = true;
                                        //TROCAR MODE EMERGENCY STOP
                                     }
-                                 }else if (controle.nivelAgua <= controle.nivelAguaMinimoNormal+100){
-                                     controle.ligaBombas=true;  
-                                      if(controle.nivelAgua <= controle.nivelAguaMinimoLimite+50){
+                                 } else if (controle.nivelAgua <= controle.nivelAguaMinimoNormal+200){
+                                     ligaTodas();
+                                      if (controle.nivelAgua <= controle.nivelAguaMinimoLimite+50){
                                        controle.paradaDeEmergencia = true;
                                        //TROCAR MODE EMERGENCY STOP
                                     }
