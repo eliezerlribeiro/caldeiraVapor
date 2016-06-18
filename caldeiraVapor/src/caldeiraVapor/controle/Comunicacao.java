@@ -88,6 +88,7 @@ public class Comunicacao extends RealtimeThread {
                                 }
 				switch(msg.tipo) {
                                     case LEVEL:
+					controle.nivelAnterior = controle.nivelAgua;
 					controle.nivelAgua = msg.getConteudo();
 					break;
                                     case STEAM_BOILER_WAITING:

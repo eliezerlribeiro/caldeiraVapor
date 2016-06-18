@@ -17,10 +17,7 @@ public class Controle {
 	Diagnostico tarefaDiagnostico;
 
 	public int nivelAgua;
-        public int nivelAguaMinimoNormal;
-        public int nivelAguaMaximoNormal;
-        public int nivelAguaMinimoLimite;
-        public int nivelAguaMaximoLimite;
+	public int nivelAnterior;
         public int fluxoVapor;
         public int mode; // 1 INICIACAO ; 2 NORMAL
         public int falha; /// 1 sensorNivelAgua ; 2 Bomba 1 ;...;
@@ -35,13 +32,8 @@ public class Controle {
 	public Controle(FilaPlantaParaControle filaEntrada, FilaControleParaPlanta filaSaida) {
 
                 // Inicializa as variaveis
-                nivelAguaMinimoNormal = 100; 
-                nivelAguaMaximoNormal = 600;
-                
-                nivelAguaMinimoLimite = 50;
-                nivelAguaMaximoLimite = 800;
-
 		nivelAgua = 0;
+		nivelAnterior = 0;
 
 		ligaBomba = new boolean[4];
 		desligaBomba = new boolean[4];
