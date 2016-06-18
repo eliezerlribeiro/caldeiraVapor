@@ -38,6 +38,10 @@ public class CaldeiraVapor extends Thread {
         valvula = new ValvulaSaidaCaldeira();
     }
     
+	public synchronized int getNivel() {
+		return sensorAgua.getNivel();
+	}
+
     public void enchendoCaldeira() {
         int somatorio = 0;
        for(int i = 0 ; i < totalBombas; i++){
