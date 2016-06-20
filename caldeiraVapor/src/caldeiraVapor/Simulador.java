@@ -27,7 +27,7 @@ public class Simulador {
         caldeiraSimulada.start();
 		Controle controle = new Controle(fila1, fila2);
 
-		// Fica esperando que as interfaces conectem
+		//Fica esperando que as interfaces conectem
 		ServerSocket listener = new ServerSocket(31313);
 		try {
 			while (true) {

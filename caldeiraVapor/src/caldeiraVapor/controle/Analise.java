@@ -11,11 +11,12 @@ import caldeiraVapor.controle.Controle;
 public class Analise extends RealtimeThread {
 
 	private Controle controle;
-
-    public int minimoNormal;
-    public int maximoNormal;
-    public int minimoLimite;
-    public int maximoLimite;
+        
+        public int capacidade;
+        public int minimoNormal;
+        public int maximoNormal;
+        public int minimoLimite;
+        public int maximoLimite;
 
 	public int[] thrBomba;
 
@@ -23,16 +24,18 @@ public class Analise extends RealtimeThread {
 		super(priorityParameters, periodicParameters);
 		this.controle = controle;
 
-        minimoLimite = 50;
-        minimoNormal = 100; 
-        maximoNormal = 600;        
-        maximoLimite = 800;
+        capacidade = 1000;
+        minimoLimite = (int)(capacidade*0.05);
+        minimoNormal = (int)(capacidade*0.1); 
+        maximoNormal = (int)(capacidade*0.6);        
+        maximoLimite = (int)(capacidade*0.8);
 
-		thrBomba = new int[4];
-		thrBomba[0] = 200;
-		thrBomba[1] = 300;
-		thrBomba[2] = 400;
-		thrBomba[3] = 500;
+        thrBomba = new int[4];
+        thrBomba[0] = 200;
+        thrBomba[1] = 300;
+        thrBomba[2] = 400;
+        thrBomba[3] = 500;
+        
 	}
 
 	private void ligaTodas() {

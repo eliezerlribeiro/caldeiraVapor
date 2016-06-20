@@ -46,9 +46,33 @@ public class CaldeiraVapor extends Thread {
         mode = 1;
     }
     
-	public synchronized int getNivel() {
-		return sensorAgua.getNivel();
-	}
+    public synchronized int getNivel() {
+            return sensorAgua.getNivel();
+    }
+    public synchronized int getCapacidade() {
+            return capacidade;
+    }
+    public synchronized int getBombaAbertas() {
+        int cont=0;
+        for(int i=0;i < totalBombas ; i++ ){
+            if(arrayBombas[i].bombaAberta)
+                cont++;
+        }
+        return cont;
+    }
+    public synchronized int getFluxoVapor() {
+            return sensorVapor.getFluxo();
+    }
+    public synchronized int getModo() {
+            return mode;
+    }
+    public synchronized Boolean getValvula() {
+            return valvula.getAberta();
+    }
+    
+    public synchronized int getFluxoValvula() {
+            return valvula.getFluxo();
+    }
 
     public void enchendoCaldeira() {
         int somatorio = 0;

@@ -1,5 +1,7 @@
 javac caldeiraVapor/clientGui/TestClient.java
 
+javac caldeiraVapor/CaldeiraVaporGui.java
+
 jamaicac caldeiraVapor/controle/*.java
 
 jamaicac caldeiraVapor/mensagens/*.java
@@ -10,7 +12,7 @@ jamaicac caldeiraVapor/Simulador.java
 
 jamaicac caldeiraVapor/ServerThread.java
 
-jamaicabuilder caldeiraVapor.Simulador
+#jamaicabuilder caldeiraVapor.Simulador
 
 jamaicavm caldeiraVapor.Simulador
 

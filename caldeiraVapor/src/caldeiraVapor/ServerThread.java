@@ -20,24 +20,37 @@ public class ServerThread extends Thread {
 	}
 
 	public void run() {
+                out.print("CAPACIDADE,");
+                out.println(planta.getCapacidade());
 		while (true) {
-			out.print("LEVEL,");
-			out.println(planta.getNivel());
-			if (out.checkError()) {
-				System.out.println("Desconexão de cliente");
-				try {
-					s.close();
-				} catch (IOException ioe) {
-					//
-				}
-				return;
-			}
-
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException ie) {
-				// sem problemas aqui na verdade
-			}
+                    out.print("MODO,");
+                    out.println(planta.getModo());
+                    //Enviar LEVEL
+                    out.print("LEVEL,");
+                    out.println(planta.getNivel());
+                    //Enviar Bombas Abertas
+                    out.print("BOMBA,");
+                    out.println(planta.getBombaAbertas());
+                    //Enviar FluxoVapor
+                    out.print("VAPOR,");
+                    out.println(planta.getFluxoVapor());
+                    //Enviar valvula aberta
+                    out.print("VALVUlA,");
+                    out.println(planta.getValvula());
+                    if (out.checkError()) {
+                            System.out.println("Desconexão de cliente");
+                            try {
+                                    s.close();
+                            } catch (IOException ioe) {
+                                    //
+                            }
+                            return;
+                    }
+                    try {
+                            Thread.sleep(3000);
+                    } catch (InterruptedException ie) {
+                            // sem problemas aqui na verdade
+                    }
 		}
 	}
 
