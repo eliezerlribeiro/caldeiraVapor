@@ -1,6 +1,10 @@
 package caldeiraVapor;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /*
@@ -70,10 +74,14 @@ public class CaldeiraVaporGui extends javax.swing.JFrame {
         }
     }
     public static void setValvula(String vapor ){
-        if(vapor=="true")
+        if(vapor.equals("true")){
             valvulaGui.setSelected(true);
-        if(vapor=="false")
+            valvulaGui.setText("Aberta");
+        }
+        if(vapor.equals("false")){
             valvulaGui.setSelected(false);
+            valvulaGui.setText("Fechada");
+        }
     }
     public static void setModo(String modo ){
         modoGui.setText("Modo: "+ modo);
@@ -195,52 +203,91 @@ public class CaldeiraVaporGui extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bomba1GuiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bomba1GuiActionPerformed
-        if(bomba1Gui.isSelected()){     
-            bomba1Gui.setSelected(true);
-            bomba1Gui.setText("Aberta");
-        }else{
-            bomba1Gui.setSelected(false);
-            bomba1Gui.setText("Fechada");
-        }
+        try {
+            if(bomba1Gui.isSelected()){     
+                bomba1Gui.setSelected(true);
+                bomba1Gui.setText("Aberta");
+                enviarParaServidor("BOMBA,1,true");
+            }else{
+                bomba1Gui.setSelected(false);
+                bomba1Gui.setText("Fechada");
+                enviarParaServidor("BOMBA,1,false");
+            }
+         } catch (IOException ex) {
+                Logger.getLogger(CaldeiraVaporGui.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }//GEN-LAST:event_bomba1GuiActionPerformed
-
+    private void enviarParaServidor(String msg) throws IOException  {
+        PrintWriter out;
+        Socket s = new Socket("127.0.0.1", 31314);
+        out = new PrintWriter(s.getOutputStream(), true);
+        out.println(msg);
+    }
+    
+    
     private void bomba2GuiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bomba2GuiActionPerformed
-        if(bomba2Gui.isSelected()){     
-            bomba2Gui.setSelected(true);
-            bomba2Gui.setText("Aberta");
-        }else{
-            bomba2Gui.setText("Fechada");
-            bomba2Gui.setSelected(false);
-        }
+      try {
+            if(bomba2Gui.isSelected()){     
+                bomba2Gui.setSelected(true);
+                bomba2Gui.setText("Aberta");
+                enviarParaServidor("BOMBA,1,true");
+            }else{
+                bomba2Gui.setSelected(false);
+                bomba2Gui.setText("Fechada");
+                enviarParaServidor("BOMBA,1,false");
+            }
+         } catch (IOException ex) {
+                Logger.getLogger(CaldeiraVaporGui.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }//GEN-LAST:event_bomba2GuiActionPerformed
 
     private void bomba3GuiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bomba3GuiActionPerformed
-        if(bomba3Gui.isSelected()){     
-            bomba3Gui.setSelected(true);
-            bomba3Gui.setText("Aberta");
-        }else{
-            bomba3Gui.setText("Fechada");
-            bomba3Gui.setSelected(false);
-        }
+        try {
+            if(bomba3Gui.isSelected()){     
+                bomba3Gui.setSelected(true);
+                bomba3Gui.setText("Aberta");
+                enviarParaServidor("BOMBA,1,true");
+            }else{
+                bomba3Gui.setSelected(false);
+                bomba3Gui.setText("Fechada");
+                enviarParaServidor("BOMBA,1,false");
+            }
+         } catch (IOException ex) {
+                Logger.getLogger(CaldeiraVaporGui.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }//GEN-LAST:event_bomba3GuiActionPerformed
 
     private void bomba4GuiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bomba4GuiActionPerformed
-        if(bomba4Gui.isSelected()){     
-            bomba4Gui.setSelected(true);
-            bomba4Gui.setText("Aberta");
-        }else{
-            bomba4Gui.setText("Fechada");
-            bomba4Gui.setSelected(false);
-        }
+       try {
+            if(bomba4Gui.isSelected()){     
+                bomba4Gui.setSelected(true);
+                bomba4Gui.setText("Aberta");
+                enviarParaServidor("BOMBA,1,true");
+            }else{
+                bomba4Gui.setSelected(false);
+                bomba4Gui.setText("Fechada");
+                enviarParaServidor("BOMBA,1,false");
+            }
+         } catch (IOException ex) {
+                Logger.getLogger(CaldeiraVaporGui.class.getName()).log(Level.SEVERE, null, ex);
+            } 
     }//GEN-LAST:event_bomba4GuiActionPerformed
 
     private void valvulaGuiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valvulaGuiActionPerformed
-         if(valvulaGui.isSelected()){     
+        
+        try { 
+            if(valvulaGui.isSelected()){     
             valvulaGui.setSelected(true);
             valvulaGui.setText("Aberta");
-        }else{
-            valvulaGui.setText("Fechada");
-            valvulaGui.setSelected(false);
+            enviarParaServidor("VALVULA,true");
+            }else{
+                valvulaGui.setText("Fechada");
+                valvulaGui.setSelected(false);
+                enviarParaServidor("VALVULA,false");
+
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(CaldeiraVaporGui.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_valvulaGuiActionPerformed
       public static void main(String args[]) throws IOException {

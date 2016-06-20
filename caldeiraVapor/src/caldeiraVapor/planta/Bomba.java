@@ -12,10 +12,13 @@ public class Bomba {
     public void abre() {
         bombaAberta = true;
     }
+    public void setAberta(Boolean entrada){
+        bombaAberta= entrada;
+    }
 
-	public void fecha() {
-		bombaAberta = false;
-	}
+    public void fecha() {
+            bombaAberta = false;
+    }
     
     public Boolean isBombaAberta() {
         return bombaAberta;

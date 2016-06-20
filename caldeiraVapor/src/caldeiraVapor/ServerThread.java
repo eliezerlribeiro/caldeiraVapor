@@ -18,7 +18,6 @@ public class ServerThread extends Thread {
 		this.planta = planta;
 		this.out = new PrintWriter(this.s.getOutputStream(), true);
 	}
-
 	public void run() {
                 out.print("CAPACIDADE,");
                 out.println(planta.getCapacidade());
@@ -35,7 +34,7 @@ public class ServerThread extends Thread {
                     out.print("VAPOR,");
                     out.println(planta.getFluxoVapor());
                     //Enviar valvula aberta
-                    out.print("VALVUlA,");
+                    out.print("VALVULA,");
                     out.println(planta.getValvula());
                     if (out.checkError()) {
                             System.out.println("Desconexão de cliente");

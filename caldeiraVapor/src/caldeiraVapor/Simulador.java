@@ -26,19 +26,23 @@ public class Simulador {
         CaldeiraVapor caldeiraSimulada = new CaldeiraVapor(fila1, fila2);
         caldeiraSimulada.start();
 		Controle controle = new Controle(fila1, fila2);
-
-		//Fica esperando que as interfaces conectem
-		ServerSocket listener = new ServerSocket(31313);
-		try {
-			while (true) {
-				Socket socket = listener.accept();
-				new ServerThread(socket, caldeiraSimulada).start();
-			}
-		} catch (IOException ioe) {
-			System.out.println("Não foi possível estabelecer conectividade com as interfaces gráficas.");
-		} finally {
-			listener.close();
-		}
+        
+                
+	ServerThreadRecebe recebeDaGui = new ServerThreadRecebe(31314,caldeiraSimulada);
+        recebeDaGui.start();
+        
+        //Fica esperando que as interfaces conectem
+        ServerSocket listener = new ServerSocket(31313);
+        try {
+                while (true) {
+                        Socket socket = listener.accept();
+                        new ServerThread(socket, caldeiraSimulada).start();
+                }
+        } catch (IOException ioe) {
+                System.out.println("Não foi possível estabelecer conectividade com as interfaces gráficas.");
+        } finally {
+                listener.close();
+        }
 
     }
 }

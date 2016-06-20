@@ -45,7 +45,21 @@ public class CaldeiraVapor extends Thread {
         filaParaControle.post(msg);
         mode = 1;
     }
-    
+    public synchronized void setBombaAberta(int i, String aberta) {
+        if(aberta.equals("true"))    
+            arrayBombas[i].setAberta(true);
+        else
+            arrayBombas[i].setAberta(false);
+            
+    }
+      public synchronized void setValvula( String aberta) {
+        if(aberta.equals("true"))  {  
+        System.out.println("ABERTAVALVULA "+aberta);
+        valvula.setAberta(true);
+        }else{
+            valvula.setAberta(false);
+        }
+    }
     public synchronized int getNivel() {
             return sensorAgua.getNivel();
     }
@@ -113,7 +127,7 @@ public class CaldeiraVapor extends Thread {
             calculaNivel();
             System.out.println("Nível: " + sensorAgua.getNivel());
             System.out.println("Fluxo: "+ sensorVapor.getFluxo());
-            System.out.println("FluxoValvula: "+ valvula.getFluxo() + "Abrto? "+valvula.getAberta());
+            System.out.println("FluxoValvula: "+ valvula.getFluxo() + " Abrto? "+valvula.getAberta());
             // Despacha mensagens
             if (filaParaControle.isEmpty()) {
 					MensagemDaPlanta msg;

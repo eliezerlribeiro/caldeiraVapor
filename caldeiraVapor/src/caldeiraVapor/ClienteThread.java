@@ -25,7 +25,6 @@ public class ClienteThread extends Thread  {
 	}
 
 	public void run()  {
-
             try {
             Socket s = new Socket("127.0.0.1", porta);
         
@@ -48,7 +47,7 @@ public class ClienteThread extends Thread  {
                             break;
                         case "BOMBA":
                                 plantaGui.setBombaAberta(Integer.parseInt(words[1]));
-                                 System.out.println(answer);
+                                System.out.println(answer);
                             break;
                         case "VAPOR":
                                 plantaGui.setVapor(words[1]);
@@ -65,6 +64,7 @@ public class ClienteThread extends Thread  {
                         default:
                             break;
                     }
+                    
                 }
             } catch (IOException ex) {
                 Logger.getLogger(ClienteThread.class.getName()).log(Level.SEVERE, null, ex);
