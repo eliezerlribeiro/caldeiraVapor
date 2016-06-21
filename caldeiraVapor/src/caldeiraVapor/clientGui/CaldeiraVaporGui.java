@@ -38,7 +38,7 @@ public class CaldeiraVaporGui extends javax.swing.JFrame {
         minimoLimiteGui.setText((int)(capacidade*0.05)+"");
     }
     public static void setLevel(String litros ){
-        levelGui.setText("SensorLevel: "+litros+"L");
+        levelGui.setText("Sensor Level: "+litros+"L");
     }
     
     public static void setVapor(String vapor) {
@@ -130,7 +130,7 @@ public class CaldeiraVaporGui extends javax.swing.JFrame {
             }
         });
         getContentPane().add(bomba1Gui);
-        bomba1Gui.setBounds(90, 170, 140, 30);
+        bomba1Gui.setBounds(90, 180, 140, 30);
 
         bomba2Gui.setText("Aberto/Fechado");
         bomba2Gui.addActionListener(new java.awt.event.ActionListener() {
@@ -168,21 +168,29 @@ public class CaldeiraVaporGui extends javax.swing.JFrame {
         getContentPane().add(valvulaGui);
         valvulaGui.setBounds(770, 420, 140, 30);
 
-        capacidadeGui.setText("1000L");
+        capacidadeGui.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        capacidadeGui.setForeground(new java.awt.Color(0, 0, 0));
+        capacidadeGui.setText("Capacity: 1000L");
         getContentPane().add(capacidadeGui);
-        capacidadeGui.setBounds(450, 270, 49, 18);
+        capacidadeGui.setBounds(400, 100, 170, 22);
 
+        vaporGui.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        vaporGui.setForeground(new java.awt.Color(192, 0, 0));
         vaporGui.setText("0 ml/s");
         getContentPane().add(vaporGui);
-        vaporGui.setBounds(460, 80, 120, 18);
+        vaporGui.setBounds(630, 110, 120, 18);
 
+        levelGui.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        levelGui.setForeground(new java.awt.Color(0, 0, 0));
         levelGui.setText("Sensor Level");
         getContentPane().add(levelGui);
-        levelGui.setBounds(480, 230, 220, 18);
+        levelGui.setBounds(520, 210, 190, 18);
 
+        modoGui.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        modoGui.setForeground(new java.awt.Color(0, 0, 0));
         modoGui.setText("MODO: ");
         getContentPane().add(modoGui);
-        modoGui.setBounds(70, 50, 170, 18);
+        modoGui.setBounds(70, 50, 170, 22);
 
         maximoLimiteGui.setText("0");
         getContentPane().add(maximoLimiteGui);
