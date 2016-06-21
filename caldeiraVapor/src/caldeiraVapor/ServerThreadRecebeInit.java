@@ -32,7 +32,10 @@ public class ServerThreadRecebeInit extends Thread {
             //SPLIT answer
             switch(words[0]) {
             case "BOMBA":
-                planta.setBombaAberta(Integer.parseInt(words[1]), words[2]);
+                if (words[2].equals("ESTRAGA"))
+                    planta.estragaBomba(Integer.parseInt(words[1]) - 1);
+                else
+                    planta.consertaBomba(Integer.parseInt(words[1]) - 1);
                 System.out.println(answer);
                 break;
             case "VALVULA":

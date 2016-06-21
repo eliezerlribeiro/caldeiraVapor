@@ -48,9 +48,9 @@ public class CaldeiraVapor extends Thread {
     
     public synchronized void setBombaAberta(int i, String aberta) {
         if(aberta.equals("true"))
-            arrayBombas[i].setAberta(true);
+            arrayBombas[i].abre();
         else
-            arrayBombas[i].setAberta(false);
+            arrayBombas[i].fecha();
             
     }
     
@@ -83,6 +83,20 @@ public class CaldeiraVapor extends Thread {
     public boolean getBombaAberta(int i) {
         if (i >= 0 && i < 4)
             return arrayBombas[i].isBombaAberta();
+        else 
+            throw new RuntimeException();
+    }
+    
+    public void estragaBomba(int i) {
+        if (i >= 0 && i < 4)
+            arrayBombas[i].estragaBomba();
+        else 
+            throw new RuntimeException();
+    }
+    
+    public void consertaBomba(int i) {
+        if (i >= 0 && i < 4)
+            arrayBombas[i].consertaBomba();
         else 
             throw new RuntimeException();
     }
@@ -128,9 +142,9 @@ public class CaldeiraVapor extends Thread {
             
             // Recalcula o nivel da agua
             calculaNivel();
-            System.out.println("Nível: " + sensorAgua.getNivel());
-            System.out.println("Fluxo: "+ sensorVapor.getFluxo());
-            System.out.println("FluxoValvula: "+ valvula.getFluxo() + " Abrto? "+valvula.getAberta());
+            //System.out.println("Nível: " + sensorAgua.getNivel());
+            //System.out.println("Fluxo: "+ sensorVapor.getFluxo());
+            //System.out.println("FluxoValvula: "+ valvula.getFluxo() + " Abrto? "+valvula.getAberta());
             
             // Despacha mensagens
             if (filaParaControle.isEmpty()) {

@@ -122,6 +122,7 @@ public class CaldeiraVaporGui extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jToggleButton1 = new javax.swing.JToggleButton();
         bomba1Gui = new javax.swing.JToggleButton();
         bomba2Gui = new javax.swing.JToggleButton();
         bomba3Gui = new javax.swing.JToggleButton();
@@ -135,7 +136,13 @@ public class CaldeiraVaporGui extends javax.swing.JFrame {
         maximoNormalGui = new javax.swing.JLabel();
         minimoNormalGui = new javax.swing.JLabel();
         minimoLimiteGui = new javax.swing.JLabel();
+        estraga1 = new javax.swing.JToggleButton();
+        estraga2 = new javax.swing.JToggleButton();
+        estraga3 = new javax.swing.JToggleButton();
+        estraga4 = new javax.swing.JToggleButton();
         fundoGui = new javax.swing.JLabel();
+
+        jToggleButton1.setText("jToggleButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(960, 590));
@@ -226,6 +233,42 @@ public class CaldeiraVaporGui extends javax.swing.JFrame {
         getContentPane().add(minimoLimiteGui);
         minimoLimiteGui.setBounds(820, 350, 80, 18);
 
+        estraga1.setText("Estragar");
+        estraga1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                estraga1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(estraga1);
+        estraga1.setBounds(240, 180, 90, 30);
+
+        estraga2.setText("Estragar");
+        estraga2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                estraga2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(estraga2);
+        estraga2.setBounds(240, 260, 90, 30);
+
+        estraga3.setText("Estragar");
+        estraga3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                estraga3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(estraga3);
+        estraga3.setBounds(240, 340, 90, 30);
+
+        estraga4.setText("Estragar");
+        estraga4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                estraga4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(estraga4);
+        estraga4.setBounds(240, 420, 90, 30);
+
         fundoGui.setIcon(new javax.swing.ImageIcon(getClass().getResource("/caldeiraVapor.png"))); // NOI18N
         fundoGui.setText("NivelCaldeira");
         fundoGui.setMinimumSize(new java.awt.Dimension(950, 550));
@@ -236,19 +279,7 @@ public class CaldeiraVaporGui extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bomba1GuiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bomba1GuiActionPerformed
-        try {
-            if(bomba1Gui.isSelected()) {     
-                bomba1Gui.setSelected(true);
-                bomba1Gui.setText("Aberta");
-                enviarParaServidor("BOMBA,1,true");
-            } else {
-                bomba1Gui.setSelected(false);
-                bomba1Gui.setText("Fechada");
-                enviarParaServidor("BOMBA,1,false");
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(CaldeiraVaporGui.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        //
     }//GEN-LAST:event_bomba1GuiActionPerformed
     
     private void enviarParaServidor(String msg) throws IOException {
@@ -260,51 +291,15 @@ public class CaldeiraVaporGui extends javax.swing.JFrame {
     
     
     private void bomba2GuiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bomba2GuiActionPerformed
-        try {
-            if(bomba2Gui.isSelected()) {     
-                bomba2Gui.setSelected(true);
-                bomba2Gui.setText("Aberta");
-                enviarParaServidor("BOMBA,1,true");
-            } else {
-                bomba2Gui.setSelected(false);
-                bomba2Gui.setText("Fechada");
-                enviarParaServidor("BOMBA,1,false");
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(CaldeiraVaporGui.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        //
     }//GEN-LAST:event_bomba2GuiActionPerformed
 
     private void bomba3GuiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bomba3GuiActionPerformed
-        try {
-            if (bomba3Gui.isSelected()) {     
-                bomba3Gui.setSelected(true);
-                bomba3Gui.setText("Aberta");
-                enviarParaServidor("BOMBA,1,true");
-            } else {
-                bomba3Gui.setSelected(false);
-                bomba3Gui.setText("Fechada");
-                enviarParaServidor("BOMBA,1,false");
-            }
-         } catch (IOException ex) {
-            Logger.getLogger(CaldeiraVaporGui.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        //
     }//GEN-LAST:event_bomba3GuiActionPerformed
 
     private void bomba4GuiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bomba4GuiActionPerformed
-        try {
-            if(bomba4Gui.isSelected()) {
-                bomba4Gui.setSelected(true);
-                bomba4Gui.setText("Aberta");
-                enviarParaServidor("BOMBA,1,true");
-            } else {
-                bomba4Gui.setSelected(false);
-                bomba4Gui.setText("Fechada");
-                enviarParaServidor("BOMBA,1,false");
-            }
-         } catch (IOException ex) {
-            Logger.getLogger(CaldeiraVaporGui.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        //
     }//GEN-LAST:event_bomba4GuiActionPerformed
 
     private void valvulaGuiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valvulaGuiActionPerformed
@@ -323,6 +318,70 @@ public class CaldeiraVaporGui extends javax.swing.JFrame {
             Logger.getLogger(CaldeiraVaporGui.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_valvulaGuiActionPerformed
+
+    private void estraga1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estraga1ActionPerformed
+        try {
+            if(estraga1.isSelected()) {     
+                estraga1.setSelected(true);
+                estraga1.setText("Conserta");
+                enviarParaServidor("BOMBA,1,ESTRAGA");
+            } else {
+                estraga1.setSelected(false);
+                estraga1.setText("Estraga");
+                enviarParaServidor("BOMBA,1,CONSERTA");
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(CaldeiraVaporGui.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_estraga1ActionPerformed
+
+    private void estraga2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estraga2ActionPerformed
+        try {
+            if(estraga2.isSelected()) {     
+                estraga2.setSelected(true);
+                estraga2.setText("Conserta");
+                enviarParaServidor("BOMBA,2,ESTRAGA");
+            } else {
+                estraga2.setSelected(false);
+                estraga2.setText("Estraga");
+                enviarParaServidor("BOMBA,2,CONSERTA");
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(CaldeiraVaporGui.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_estraga2ActionPerformed
+
+    private void estraga3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estraga3ActionPerformed
+        try {
+            if(estraga3.isSelected()) {     
+                estraga3.setSelected(true);
+                estraga3.setText("Conserta");
+                enviarParaServidor("BOMBA,3,ESTRAGA");
+            } else {
+                estraga3.setSelected(false);
+                estraga3.setText("Estraga");
+                enviarParaServidor("BOMBA,3,CONSERTA");
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(CaldeiraVaporGui.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_estraga3ActionPerformed
+
+    private void estraga4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estraga4ActionPerformed
+        try {
+            if(estraga4.isSelected()) {     
+                estraga4.setSelected(true);
+                estraga4.setText("Conserta");
+                enviarParaServidor("BOMBA,4,ESTRAGA");
+            } else {
+                estraga4.setSelected(false);
+                estraga4.setText("Estraga");
+                enviarParaServidor("BOMBA,4,CONSERTA");
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(CaldeiraVaporGui.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_estraga4ActionPerformed
     
     public static void main(String args[]) throws IOException {
         CaldeiraVaporGui plantaGui = new CaldeiraVaporGui();
@@ -337,7 +396,12 @@ public class CaldeiraVaporGui extends javax.swing.JFrame {
     private static javax.swing.JToggleButton bomba3Gui;
     private static javax.swing.JToggleButton bomba4Gui;
     private static javax.swing.JLabel capacidadeGui;
+    private javax.swing.JToggleButton estraga1;
+    private javax.swing.JToggleButton estraga2;
+    private javax.swing.JToggleButton estraga3;
+    private javax.swing.JToggleButton estraga4;
     private javax.swing.JLabel fundoGui;
+    private javax.swing.JToggleButton jToggleButton1;
     private static javax.swing.JLabel levelGui;
     private static javax.swing.JLabel maximoLimiteGui;
     private static javax.swing.JLabel maximoNormalGui;

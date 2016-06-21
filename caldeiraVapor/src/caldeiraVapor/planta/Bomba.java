@@ -18,7 +18,8 @@ public class Bomba {
     }
     
     public void setAberta(Boolean entrada){
-        bombaAberta = entrada;
+        if (!estragada)
+            bombaAberta = entrada;
     }
 
     public void fecha() {
