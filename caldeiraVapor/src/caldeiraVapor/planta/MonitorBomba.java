@@ -1,14 +1,18 @@
 package caldeiraVapor.planta;
 
 public class MonitorBomba {  
-    Boolean funcionando;
-    MonitorBomba(){
-        funcionando=true;
+    
+    private Boolean funcionando;
+    
+    MonitorBomba() {
+        funcionando = true;
     }
-    void setFuncionando(Boolean val){
+    
+    void setFuncionando(Boolean val) {
         funcionando = val;
     }
-    Boolean getFuncionando(){
+    
+    Boolean getFuncionando() {
         return funcionando;
     }
 }

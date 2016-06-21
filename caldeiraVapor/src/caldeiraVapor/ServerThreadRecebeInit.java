@@ -13,41 +13,38 @@ import java.util.logging.Logger;
 
 public class ServerThreadRecebeInit extends Thread {
 
-	protected Socket s;
-	protected CaldeiraVapor planta;
+    protected Socket s;
+    protected CaldeiraVapor planta;
 
-	public ServerThreadRecebeInit(Socket s, CaldeiraVapor planta) throws IOException {
-		this.s = s;
-		this.planta = planta;
-		
-	}
-        
-	public void run() {
-            try {
-                BufferedReader input =
-                    new BufferedReader(new InputStreamReader(s.getInputStream()));
+    public ServerThreadRecebeInit(Socket s, CaldeiraVapor planta) throws IOException {
+        this.s = s;
+        this.planta = planta;
+    }
 
-                String answer;
+    public void run() {
+        try {
+            BufferedReader input =
+                new BufferedReader(new InputStreamReader(s.getInputStream()));
 
-                    answer = input.readLine();
-                String words[] = answer.split(",");
+            String answer = input.readLine();
+            String words[] = answer.split(",");
 
-                //SPLIT answer
-                switch(words[0]) {
-                    case "BOMBA":
-                            planta.setBombaAberta(Integer.parseInt(words[1]) , words[2] );
-                            System.out.println(answer);
-                        break;
-                    case "VALVULA":
-                            planta.setValvula(words[1]);
-                            System.out.println(answer);
-                        break;
-                    default:
-                        break;
-                }
-            } catch (IOException ex) {
-                Logger.getLogger(ServerThreadRecebeInit.class.getName()).log(Level.SEVERE, null, ex);
+            //SPLIT answer
+            switch(words[0]) {
+            case "BOMBA":
+                planta.setBombaAberta(Integer.parseInt(words[1]), words[2]);
+                System.out.println(answer);
+                break;
+            case "VALVULA":
+                planta.setValvula(words[1]);
+                System.out.println(answer);
+                break;
+            default:
+                break;
             }
-	}
+        } catch (IOException ex) {
+            Logger.getLogger(ServerThreadRecebeInit.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
 }

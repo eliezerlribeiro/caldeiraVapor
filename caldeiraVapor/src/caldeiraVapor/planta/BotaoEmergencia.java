@@ -1,15 +1,19 @@
 package caldeiraVapor.planta;
 
 public class BotaoEmergencia {
-    Boolean botaoEmerg;
-    BotaoEmergencia (){
-        botaoEmerg=false;
+    
+    private Boolean botaoEmerg;
+    
+    BotaoEmergencia () {
+        botaoEmerg = false;
     }
-    public void push(){
+    
+    public void push() {
         System.out.println("BOTAO PARADA DE EMERGENCIA");
         botaoEmerg = true;
     }
-    Boolean getBotaoEmerg( ){
-        return botaoEmerg ;
+    
+    public Boolean getBotaoEmerg() {
+        return botaoEmerg;
     }
 }

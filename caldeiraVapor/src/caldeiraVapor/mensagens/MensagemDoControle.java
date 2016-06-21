@@ -6,8 +6,8 @@ public class MensagemDoControle {
 
 	public TipoDeMensagem tipo;
 	private int n; // usado quando a mensagem precisa carregar um valor
-    private boolean b; // p. ex. qual bomba que tem que abrir
-					// o significado varia de acordo com a mensagem
+        private boolean b; // p. ex. qual bomba que tem que abrir
+                            // o significado varia de acordo com a mensagem
 
 	public MensagemDoControle(TipoDeMensagem tipo) {
 		this.tipo = tipo;

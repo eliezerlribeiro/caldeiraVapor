@@ -12,96 +12,96 @@ import javax.realtime.RealtimeThread;
 
 public class Controle {
 
-	Analise tarefaAnalise;
-	Comunicacao tarefaComunicacao;
-	Diagnostico tarefaDiagnostico;
+    private Analise tarefaAnalise;
+    private Comunicacao tarefaComunicacao;
+    private Diagnostico tarefaDiagnostico;
 
-	public int nivelAgua;
-	public int nivelAnterior;
-        public int fluxoVapor;
-        public int mode; // 1 INICIACAO ; 2 NORMAL
-        public int falha; /// 1 sensorNivelAgua ; 2 Bomba 1 ;...;
-	
-        public boolean[] ligaBomba;
-	public boolean[] desligaBomba;
-        public boolean abreValvula;
-        public boolean fechaValvula;
-        public boolean programRead;
-        public boolean paradaDeEmergencia;
+    public int nivelAgua;
+    public int nivelAnterior;
+    public int fluxoVapor;
+    public int mode; // 1 INICIACAO ; 2 NORMAL
+    public int falha; /// 1 sensorNivelAgua ; 2 Bomba 1 ;...;
 
-	public Controle(FilaPlantaParaControle filaEntrada, FilaControleParaPlanta filaSaida) {
+    public boolean[] ligaBomba;
+    public boolean[] desligaBomba;
+    public boolean abreValvula;
+    public boolean fechaValvula;
+    public boolean programRead;
+    public boolean paradaDeEmergencia;
 
-                // Inicializa as variaveis
-		nivelAgua = 0;
-		nivelAnterior = 0;
+    public Controle(
+            FilaPlantaParaControle filaEntrada,
+            FilaControleParaPlanta filaSaida
+    ) {
 
-		ligaBomba = new boolean[4];
-		desligaBomba = new boolean[4];
-		for (int i = 0; i < 4; i++) {
-			ligaBomba[i] = false;
-			desligaBomba[i] = false;
-		}
+        // Inicializa as variaveis
+        nivelAgua = 0;
+        nivelAnterior = 0;
 
-		abreValvula = false;
-		fechaValvula = false;
-		paradaDeEmergencia = false;
-		programRead = false;
+        ligaBomba = new boolean[4];
+        desligaBomba = new boolean[4];
+        for (int i = 0; i < 4; i++) {
+                ligaBomba[i] = false;
+                desligaBomba[i] = false;
+        }
 
-		// Parametriza a tarefa de comunicacao (diz o periodo e a prioridade)
-		PriorityParameters prioridadeComunicacao = 
-				new PriorityParameters(
-						PriorityScheduler.instance().getMinPriority()+10
-				);
+        abreValvula = false;
+        fechaValvula = false;
+        paradaDeEmergencia = false;
+        programRead = false;
 
-		PeriodicParameters periodoComunicacao =
-				new PeriodicParameters(
-						null,
-						new RelativeTime(5000 /* ms */, 0 /* ns */),
-						null,null,null,null
-				);
+        // Parametriza a tarefa de comunicacao (diz o periodo e a prioridade)
+        PriorityParameters prioridadeComunicacao = 
+                        new PriorityParameters(
+                                        PriorityScheduler.instance().getMinPriority()+10
+                        );
 
-		// Parametriza a tarefa de analise (diz o periodo e a prioridade)
-		PriorityParameters prioridadeAnalise = 
-				new PriorityParameters(
-						PriorityScheduler.instance().getMinPriority()+10
-				);
+        PeriodicParameters periodoComunicacao =
+                        new PeriodicParameters(
+                                        null,
+                                        new RelativeTime(5000 /* ms */, 0 /* ns */),
+                                        null,null,null,null
+                        );
 
-		PeriodicParameters periodoAnalise =
-				new PeriodicParameters(
-						null,
-						new RelativeTime(2500 /* ms */, 0 /* ns */),
-						null,null,null,null
-				);
+        // Parametriza a tarefa de analise (diz o periodo e a prioridade)
+        PriorityParameters prioridadeAnalise = 
+                        new PriorityParameters(
+                                        PriorityScheduler.instance().getMinPriority()+10
+                        );
 
-		// Parametriza a tarefa de diagnostico (diz o periodo e a prioridade)
-		PriorityParameters prioridadeDiagnostico = 
-				new PriorityParameters(
-						PriorityScheduler.instance().getMinPriority()+10
-				);
+        PeriodicParameters periodoAnalise =
+                        new PeriodicParameters(
+                                        null,
+                                        new RelativeTime(2500 /* ms */, 0 /* ns */),
+                                        null,null,null,null
+                        );
 
-		PeriodicParameters periodoDiagnostico =
-				new PeriodicParameters(
-						null,
-						new RelativeTime(5000 /* ms */, 0 /* ns */),
-						null,null,null,null
-				);
+        // Parametriza a tarefa de diagnostico (diz o periodo e a prioridade)
+        PriorityParameters prioridadeDiagnostico = 
+                        new PriorityParameters(
+                                        PriorityScheduler.instance().getMinPriority()+10
+                        );
 
-		// Inicializa as tarefas (aplica os parametros acima)
-	    tarefaAnalise =
-				new Analise(prioridadeAnalise, periodoAnalise, this);
+        PeriodicParameters periodoDiagnostico =
+                        new PeriodicParameters(
+                                        null,
+                                        new RelativeTime(5000 /* ms */, 0 /* ns */),
+                                        null,null,null,null
+                        );
 
-	    tarefaComunicacao = 
-				new Comunicacao(
-					prioridadeComunicacao, periodoComunicacao, 
-					this, filaEntrada, filaSaida
-				);
+        // Inicializa as tarefas (aplica os parametros acima)
+        tarefaAnalise = new Analise(prioridadeAnalise, periodoAnalise, this);
 
-	    tarefaDiagnostico = 
-				new Diagnostico(prioridadeDiagnostico, periodoDiagnostico, this);
+        tarefaComunicacao = new Comunicacao(
+                                    prioridadeComunicacao, periodoComunicacao, 
+                                    this, filaEntrada, filaSaida);
 
-		// Bota as tarefas pra rodar
-		tarefaAnalise.start();
-		tarefaComunicacao.start();
-		tarefaDiagnostico.start();
-	}
+        tarefaDiagnostico =
+                new Diagnostico(prioridadeDiagnostico, periodoDiagnostico, this);
+
+        // Bota as tarefas pra rodar
+        tarefaAnalise.start();
+        tarefaComunicacao.start();
+        tarefaDiagnostico.start();
+    }
 }

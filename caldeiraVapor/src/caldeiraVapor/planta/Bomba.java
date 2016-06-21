@@ -1,8 +1,9 @@
 package caldeiraVapor.planta;
 
 public class Bomba {
-    int vazao; // L/seg
-    Boolean bombaAberta; // true se a bomba esta aberta, false se fechada
+    
+    private int vazao; // L/seg
+    private Boolean bombaAberta; // true se a bomba esta aberta, false se fechada
 
     Bomba() {
         vazao = 5; // L/seg
@@ -12,8 +13,9 @@ public class Bomba {
     public void abre() {
         bombaAberta = true;
     }
+    
     public void setAberta(Boolean entrada){
-        bombaAberta= entrada;
+        bombaAberta = entrada;
     }
 
     public void fecha() {
