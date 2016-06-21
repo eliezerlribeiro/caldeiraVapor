@@ -24,6 +24,8 @@ public class Controle {
 
     public boolean[] ligaBomba;
     public boolean[] desligaBomba;
+    public boolean[] isBombaAberta;
+    public boolean[] deveriaEstarAberta;
     public boolean abreValvula;
     public boolean fechaValvula;
     public boolean programRead;
@@ -40,9 +42,13 @@ public class Controle {
 
         ligaBomba = new boolean[4];
         desligaBomba = new boolean[4];
+        isBombaAberta = new boolean[4];
+        deveriaEstarAberta = new boolean[4];
         for (int i = 0; i < 4; i++) {
-                ligaBomba[i] = false;
-                desligaBomba[i] = false;
+            ligaBomba[i] = false;
+            desligaBomba[i] = false;
+            isBombaAberta[i] = false;
+            deveriaEstarAberta[i] = false;
         }
 
         abreValvula = false;

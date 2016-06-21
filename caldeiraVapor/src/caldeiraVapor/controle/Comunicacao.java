@@ -113,6 +113,10 @@ public class Comunicacao extends RealtimeThread {
                         filaSaida.post(msgC1);
                     }   
                     break;
+                case PUMP_STATE:
+                    int i = msg.getConteudo();
+                    controle.isBombaAberta[i] = msg.getFlag();
+                    break;
                 default:
                     break;
                 }

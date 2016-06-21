@@ -13,11 +13,11 @@ public class Analise extends RealtimeThread {
     private Controle controle;
 
     public int capacidade;
-    public int minimoNormal;
-    public int maximoNormal;
-    public int minimoLimite;
-    public int maximoLimite;
-
+    private int minimoNormal;
+    private int maximoNormal;
+    private int minimoLimite;
+    private int maximoLimite;
+    
     public int[] thrBomba;
 
     public Analise(
@@ -44,12 +44,14 @@ public class Analise extends RealtimeThread {
     private void ligaTodas() {
         for (int i = 0; i < 4; i++) {
             controle.ligaBomba[i] = true;
+            controle.deveriaEstarAberta[i] = true;
         }
     }
 
     private void desligaTodas() {
         for (int i = 0; i < 4; i++) {
-                controle.desligaBomba[i] = true;
+            controle.desligaBomba[i] = true;
+            controle.deveriaEstarAberta[i] = false;
         }
     }
 
@@ -90,8 +92,10 @@ public class Analise extends RealtimeThread {
                 for (int i = 0; i < 4; i++) {
                     if (dn < 0 && controle.nivelAgua < thrBomba[i] + 50) {
                         controle.ligaBomba[i] = true;
+                        controle.deveriaEstarAberta[i] = true;
                     } else if (dn > 0 && controle.nivelAgua > thrBomba[i] - 50) {
                         controle.desligaBomba[i] = true;
+                        controle.deveriaEstarAberta[i] = false;
                     }
                 }
 

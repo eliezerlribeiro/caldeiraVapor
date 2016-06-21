@@ -136,6 +136,12 @@ public class CaldeiraVapor extends Thread {
                 msg = new MensagemDaPlanta(TipoDeMensagem.STEAM);
                 msg.setConteudo(sensorVapor.getFluxo());
                 filaParaControle.post(msg);
+                
+                for (int i = 0; i < 4; i++) {
+                    msg = new MensagemDaPlanta(TipoDeMensagem.PUMP_STATE);
+                    msg.setConteudo(i, arrayBombas[i].isBombaAberta());
+                    filaParaControle.post(msg);
+                }
             }
 
             // Recebe mensagens
