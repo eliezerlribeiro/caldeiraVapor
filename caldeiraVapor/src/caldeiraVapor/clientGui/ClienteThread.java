@@ -1,6 +1,7 @@
-package caldeiraVapor;
+package caldeiraVapor.clientGui;
 
 import caldeiraVapor.planta.*;
+import caldeiraVapor.clientGui.CaldeiraVaporGui;
 import java.io.BufferedReader;
 
 import java.net.Socket;
