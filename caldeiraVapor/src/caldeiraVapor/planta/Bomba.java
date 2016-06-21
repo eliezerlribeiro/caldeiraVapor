@@ -3,15 +3,18 @@ package caldeiraVapor.planta;
 public class Bomba {
     
     private int vazao; // L/seg
-    private Boolean bombaAberta; // true se a bomba esta aberta, false se fechada
+    private boolean bombaAberta; // true se a bomba esta aberta, false se fechada
+    private boolean estragada;
 
     Bomba() {
         vazao = 5; // L/seg
         bombaAberta = true;
+        estragada = false;
     }
       
     public void abre() {
-        bombaAberta = true;
+        if (!estragada)
+            bombaAberta = true;
     }
     
     public void setAberta(Boolean entrada){
@@ -19,6 +22,7 @@ public class Bomba {
     }
 
     public void fecha() {
+        if (!estragada)
             bombaAberta = false;
     }
     
@@ -34,5 +38,12 @@ public class Bomba {
         return vazao;
     }
     
+    public void estragaBomba() {
+        estragada = true;
+    }
+    
+    public void consertaBomba() {
+        estragada = false;
+    }
   
 }

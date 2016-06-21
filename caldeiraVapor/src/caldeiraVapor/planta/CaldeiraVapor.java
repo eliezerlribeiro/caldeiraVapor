@@ -80,6 +80,13 @@ public class CaldeiraVapor extends Thread {
         return cont;
     }
     
+    public boolean getBombaAberta(int i) {
+        if (i >= 0 && i < 4)
+            return arrayBombas[i].isBombaAberta();
+        else 
+            throw new RuntimeException();
+    }
+    
     public synchronized int getFluxoVapor() {
             return sensorVapor.getFluxo();
     }

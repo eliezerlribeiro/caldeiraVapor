@@ -48,7 +48,10 @@ public class ClienteThread extends Thread {
                     System.out.println(answer);
                     break;
                 case "BOMBA":
-                    plantaGui.setBombaAberta(Integer.parseInt(words[1]));
+                    if (words[2].equals("ABERTA"))
+                        plantaGui.setBomba(Integer.parseInt(words[1]), true);
+                    else
+                        plantaGui.setBomba(Integer.parseInt(words[1]), false);
                     System.out.println(answer);
                     break;
                 case "VAPOR":

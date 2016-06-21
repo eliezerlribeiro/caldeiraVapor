@@ -31,8 +31,14 @@ public class ServerThread extends Thread {
             out.print("LEVEL,");
             out.println(planta.getNivel());
             //Enviar Bombas Abertas
-            out.print("BOMBA,");
-            out.println(planta.getBombaAbertas());
+            for (int i = 0; i < 4; i++) {
+                out.print("BOMBA,");
+                out.print(i);
+                if (planta.getBombaAberta(i))
+                    out.println(",ABERTA");
+                else
+                    out.println(",FECHADA");
+            }
             //Enviar FluxoVapor
             out.print("VAPOR,");
             out.println(planta.getFluxoVapor());
@@ -51,7 +57,7 @@ public class ServerThread extends Thread {
             }
             
             try {
-                Thread.sleep(3000);
+                Thread.sleep(1000);
             } catch (InterruptedException ie) {
                 // sem problemas aqui na verdade
             }

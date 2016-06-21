@@ -24,8 +24,16 @@ public class CaldeiraVaporGui extends javax.swing.JFrame {
      * Creates new form NewJFrame
      */
    
+    private static javax.swing.JToggleButton[] bombasGui;
+    
     public CaldeiraVaporGui() {
         initComponents();
+        
+        bombasGui = new javax.swing.JToggleButton[4];
+        bombasGui[0] = bomba1Gui;
+        bombasGui[1] = bomba2Gui;
+        bombasGui[2] = bomba3Gui;
+        bombasGui[3] = bomba4Gui;
     }
     
     public static void setCapacidade(String litros) {
@@ -37,7 +45,8 @@ public class CaldeiraVaporGui extends javax.swing.JFrame {
         minimoNormalGui.setText((int)(capacidade*0.1)+"");
         minimoLimiteGui.setText((int)(capacidade*0.05)+"");
     }
-    public static void setLevel(String litros ){
+    
+    public static void setLevel(String litros ) {
         levelGui.setText("Sensor Level: "+litros+"L");
     }
     
@@ -45,7 +54,16 @@ public class CaldeiraVaporGui extends javax.swing.JFrame {
         vaporGui.setText(vapor+"L/s");
     }
     
-    public static void setBombaAberta(int quantidade) {
+    public static void setBomba(int bomba, boolean aberta) {
+        bombasGui[bomba].setSelected(aberta);
+        
+        if (aberta)
+            bombasGui[bomba].setText("Aberta");
+        else
+            bombasGui[bomba].setText("Fechada");
+    }
+    
+    public static void setBombasAbertas(int quantidade) {
         //SUPER FEIO MAS NAO PENSEI EM NADA MELHOR :B
         if (quantidade > 0) {
             bomba1Gui.setSelected(true);
@@ -79,7 +97,7 @@ public class CaldeiraVaporGui extends javax.swing.JFrame {
             bomba4Gui.setText("Fechada");
         }
     }
-    
+      
     public static void setValvula(String vapor) {
         if(vapor.equals("true")) {
             valvulaGui.setSelected(true);
